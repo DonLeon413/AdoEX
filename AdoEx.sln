@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35521.163
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdoEX", "AdoEX\AdoEX.csproj", "{7E59F828-7FA6-4CB1-80E5-C197D24792CA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdoEX.Example", "AdoEX.Examle\AdoEX.Example.csproj", "{4A864FA3-9ABE-4F87-A1A9-B64B5E064BDB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7E59F828-7FA6-4CB1-80E5-C197D24792CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E59F828-7FA6-4CB1-80E5-C197D24792CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E59F828-7FA6-4CB1-80E5-C197D24792CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E59F828-7FA6-4CB1-80E5-C197D24792CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4A864FA3-9ABE-4F87-A1A9-B64B5E064BDB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A864FA3-9ABE-4F87-A1A9-B64B5E064BDB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A864FA3-9ABE-4F87-A1A9-B64B5E064BDB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A864FA3-9ABE-4F87-A1A9-B64B5E064BDB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
