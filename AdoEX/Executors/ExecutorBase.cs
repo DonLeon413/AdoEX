@@ -3,7 +3,7 @@ using System;
 using System.Data;
 using System.Data.Common;
 
-namespace AdoEX
+namespace AdoEX.Executors
 {
     /// <summary>
     /// 
@@ -38,6 +38,20 @@ namespace AdoEX
         {
             this._DbCommand.CommandText = commandText;
             this._DbCommand.CommandType = CommandType.Text;
+
+            return this;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="storedProcedure"></param>
+        /// <returns></returns>
+        public IExecutorBuilder SetStoredProcedure(string storedProcedure)
+        {
+            this._DbCommand.CommandText += storedProcedure;
+            this._DbCommand.CommandType = CommandType.StoredProcedure;
+
             return this;
         }
 

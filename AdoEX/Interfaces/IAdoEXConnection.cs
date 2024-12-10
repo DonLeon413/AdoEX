@@ -8,7 +8,7 @@ namespace AdoEX.Interfaces
     /// <summary>
     /// 
     /// </summary>
-    public interface IAdoEXConnection: 
+    public interface IAdoExConnection: 
                      IDisposable
     {
         /// <summary>
@@ -32,5 +32,7 @@ namespace AdoEX.Interfaces
         /// <returns></returns>
         IAsyncEnumerable<TEntity> ExecuteDataReaderAsync<TEntity>(Action<IExecutorBuilder> builderAction)
                                                         where TEntity : class, new();
+
+        //Task ExecuteTransactionAsync( string trnasactionName );
     }
 }

@@ -5,10 +5,20 @@ using System.Transactions;
 
 namespace AdoEX.Interfaces
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public interface IAdoExTransaction: 
-            IAdoExCommand
+            IAdoExConnection
     {
+        /// <summary>
+        /// 
+        /// </summary>
         void Commit();
-        void ROllback();
+
+        /// <summary>
+        /// 
+        /// </summary>
+        void Rollback();
     }
 }

@@ -65,7 +65,7 @@ namespace AdoEX.Example
 
             string stringConnection = "Server = localhost; Database = AdoEX; Trusted_Connection = True; TrustServerCertificate = True; Connection Timeout=600";
             
-            using( IAdoEXConnection connection = AdoExConnection.Create( () => new SqlConnection(stringConnection)))
+            using( IAdoExConnection connection = AdoExConnection.Create( () => new SqlConnection(stringConnection)))
             {                
                 // execute scalar
                 object o_result = await connection.ExecuteScalarAsync( ( IExecutorBuilder  builder ) => 
@@ -93,6 +93,24 @@ namespace AdoEX.Example
                 {
                     Console.WriteLine($"Id: {person.Id}\tFirst name: {person.FirstName}\tLastName: {person.LastName}");
                 }
+
+                await connection.BeginTransactionAsync<TResult>((IAdoExTransaction transaction) =>
+                {
+                    try
+                    {
+
+                        transaction.Commit();
+
+                    }
+                    catch(Exception ex)
+                    {
+                        Console.WriteLine(ex.ToString());
+
+                        transaction.Rollback();
+
+                        throw;
+                    }
+                });
             }
         }
     }

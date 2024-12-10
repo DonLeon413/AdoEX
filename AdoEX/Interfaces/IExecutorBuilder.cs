@@ -15,7 +15,14 @@ namespace AdoEX.Interfaces
         /// <param name="commandText"></param>
         /// <returns></returns>
         IExecutorBuilder SetCommandText(string commandText);
-        
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="storedProcedure"></param>
+        /// <returns></returns>
+        IExecutorBuilder SetStoredProcedure(string storedProcedure);
+
         /// <summary>
         /// 
         /// </summary>

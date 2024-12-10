@@ -11,8 +11,9 @@ using System.Threading.Tasks;
 
 namespace AdoEX
 {
-    public class AdoExConnection: 
-                 IAdoEXConnection
+    public class AdoExConnection:
+                 AdoExExecutorBase,
+                 IAdoExConnection
     {
         private DbConnection _DbConnection;
         private bool disposedValue;
@@ -21,7 +22,7 @@ namespace AdoEX
         /// CTOR
         /// </summary>
         /// <param name="iDbConnection"></param>
-        private AdoExConnection (DbConnection dbConnection )
+        private AdoExConnection( DbConnection dbConnection )
         {
             this._DbConnection = dbConnection;
         }
@@ -45,71 +46,16 @@ namespace AdoEX
             return new AdoExConnection( connection );
         }
 
-        #region interface IAdoEXConnection
-
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="builder"></param>
         /// <returns></returns>
-        public Task<object> ExecuteScalarAsync( Action<IExecutorBuilder> builder )
+        protected override DbCommand GetCommand()
         {
-            using(ScalarExecutor executor = new ScalarExecutor( this._DbConnection.CreateCommand()))
-            {
-                if( !( builder is null ) )
-                {
-                    builder( executor );
-                }
-                Task<object> result = executor.ExecuteAsync();
-
-                return result;
-            }
+            return this._DbConnection.CreateCommand();
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="builder"></param>
-        /// <returns></returns>
-        public Task<int> ExecuteNonQueryAsync( Action<IExecutorBuilder> builder )
-        {
-            using( NonQueryExecutor executor = new NonQueryExecutor(this._DbConnection.CreateCommand()))
-            {
-                if(!(builder is null))
-                {
-                    builder(executor);
-                }
-
-                Task<int> result = executor.ExecuteAsync();
-
-                return result;
-            }
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <typeparam name="TEntity"></typeparam>
-        /// <param name="builderAction"></param>
-        /// <returns></returns>
-        /// <exception cref="ArgumentNullException"></exception>
-        public IAsyncEnumerable<TEntity> ExecuteDataReaderAsync<TEntity>(Action<IExecutorBuilder> builderAction )
-                                                        where TEntity : class, new()
-        {
-            if(builderAction is null)
-            {
-                throw new ArgumentNullException(nameof(builderAction));
-            }
-
-            using(ReaderExecutor<TEntity> reader = new ReaderExecutor<TEntity>(this._DbConnection.CreateCommand()))
-            {
-                builderAction( reader );
-
-                IAsyncEnumerable<TEntity> result = reader.ExecuteAsync();
-
-                return result;
-            }
-        }
+        #region interface IAdoEXConnection       
 
         #region interface IDisposable
 
