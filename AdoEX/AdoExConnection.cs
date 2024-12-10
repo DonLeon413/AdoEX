@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 
 namespace AdoEX
 {
+    //
     public class AdoExConnection:
                  AdoExExecutorBase,
                  IAdoExConnection
